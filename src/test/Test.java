@@ -19,35 +19,35 @@ public class Test {
 
 	private Singer pattiSmith;
 	private Singer bruceSpringsteen;
-	private Singer choir;
+	private Singer u2;
 
 	public void initializeSingingInThreads(JTextArea textArea) {
 		String lyrics1 = "Patty: Because the night";
 		String lyrics2 = "Bruce: Belongs to lovers";
 
-		String lyricsChoir = "Choir: Because the night belongs to lust";
+		String lyricsU2 = "U2: Because the night belongs to lust";
 
 		boolean stopIt = false;
 		Synchronizer synch = new Synchronizer(true, false, false, textArea);
 
-		Performance firstVoicePerformance = new Performance(lyrics1, 1500);
-		Performance secondVoicePerformance = new Performance(lyrics2, 1500);
-		Performance choirVoicePerformance = new Performance(lyricsChoir, 3200);
+		Performance firstVoicePerformance = new Performance(lyrics1, 1700);
+		Performance secondVoicePerformance = new Performance(lyrics2, 1800);
+		Performance choirVoicePerformance = new Performance(lyricsU2, 3500);
 
 		pattiSmith = new Singer("Patti Smith", Voice.FIRST, firstVoicePerformance, stopIt, synch);
 		bruceSpringsteen = new Singer("Bruce Springsteen", Voice.SECOND, secondVoicePerformance, stopIt, synch);
-		choir = new Singer("Choir", Voice.CHOIR, choirVoicePerformance, stopIt, synch);
+		u2 = new Singer("Choir", Voice.CHOIR, choirVoicePerformance, stopIt, synch);
 	}
 
 	public void startThreads() {
 		pattiSmith.start();
 		bruceSpringsteen.start();
-		choir.start();
+		u2.start();
 	}
 	
 	public void stopThreads() {
 		pattiSmith.setStopIt(true);
 		bruceSpringsteen.setStopIt(true);
-		choir.setStopIt(true);
+		u2.setStopIt(true);
 	}
 }

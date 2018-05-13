@@ -16,6 +16,10 @@ import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+import javax.swing.JSeparator;
+import java.awt.FlowLayout;
+import javax.swing.UIManager;
+import java.awt.Color;
 
 public class GlavniProzor extends JFrame {
 
@@ -34,6 +38,7 @@ public class GlavniProzor extends JFrame {
 	private JButton btnStopBruce;
 	private JButton btnStopU;
 	private JButton btnClear;
+	private JButton btnRefresh;
 
 	/**
 	 * Create the frame.
@@ -42,7 +47,7 @@ public class GlavniProzor extends JFrame {
 		this.guiKontr=guiKontr;
 		setTitle("Because the Night");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 550, 400);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -73,7 +78,7 @@ public class GlavniProzor extends JFrame {
 	}
 	private JButton getBtnStart() {
 		if (btnStart == null) {
-			btnStart = new JButton("Start");
+			btnStart = new JButton("Start All");
 			btnStart.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 //					guiKontr.inicijalizujThreds(textArea);
@@ -95,7 +100,7 @@ public class GlavniProzor extends JFrame {
 	}
 	private JButton getBtnStop() {
 		if (btnStop == null) {
-			btnStop = new JButton("Stop");
+			btnStop = new JButton("Stop All");
 			btnStop.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 //					guiKontr.stopThreads();
@@ -105,6 +110,7 @@ public class GlavniProzor extends JFrame {
 					btnStartBruce.setEnabled(false);
 					btnStartPatti.setEnabled(false);
 					btnStartU.setEnabled(false);
+					btnStart.setEnabled(false);
 				}
 			});
 			btnStop.setBounds(311, 12, 117, 25);
@@ -121,22 +127,27 @@ public class GlavniProzor extends JFrame {
 		if (panelEast == null) {
 			panelEast = new JPanel();
 			panelEast.setPreferredSize(new Dimension(150, 50));
+			panelEast.setLayout(null);
 			panelEast.add(getBtnStartPatty());
 			panelEast.add(getBtnStartBruce());
 			panelEast.add(getBtnStartU());
 			panelEast.add(getBtnStopPatti());
 			panelEast.add(getBtnStopBruce());
 			panelEast.add(getBtnStopU());
+			panelEast.add(getBtnRefresh());
 		}
 		return panelEast;
 	}
 	private JButton getBtnStartPatty() {
 		if (btnStartPatti == null) {
 			btnStartPatti = new JButton("Start Patti");
+			btnStartPatti.setBounds(21, 5, 108, 25);
+			btnStartPatti.setBackground(UIManager.getColor("Button.background"));
 			btnStartPatti.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					guiKontr.getT().startPatti();
 					btnStartPatti.setEnabled(false);
+					btnStart.setEnabled(false); 
 				}
 			});
 			btnStartPatti.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -146,10 +157,13 @@ public class GlavniProzor extends JFrame {
 	private JButton getBtnStartBruce() {
 		if (btnStartBruce == null) {
 			btnStartBruce = new JButton("Start Bruce");
+			btnStartBruce.setBounds(18, 35, 114, 25);
+			btnStartBruce.setBackground(UIManager.getColor("Button.background"));
 			btnStartBruce.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					guiKontr.getT().startBruce();
 					btnStartBruce.setEnabled(false);
+					btnStart.setEnabled(false); 
 				}
 			});
 		}
@@ -158,10 +172,13 @@ public class GlavniProzor extends JFrame {
 	private JButton getBtnStartU() {
 		if (btnStartU == null) {
 			btnStartU = new JButton("Start U2");
+			btnStartU.setBounds(29, 65, 92, 25);
+			btnStartU.setBackground(UIManager.getColor("Button.background"));
 			btnStartU.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					guiKontr.getT().startU2();
 					btnStartU.setEnabled(false);
+					btnStart.setEnabled(false); 
 				}
 			});
 		}
@@ -170,6 +187,8 @@ public class GlavniProzor extends JFrame {
 	private JButton getBtnStopPatti() {
 		if (btnStopPatti == null) {
 			btnStopPatti = new JButton("Stop Patti");
+			btnStopPatti.setBounds(21, 140, 105, 25);
+			btnStopPatti.setBackground(UIManager.getColor("Button.light"));
 			btnStopPatti.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					guiKontr.getT().stopPatti();
@@ -181,6 +200,8 @@ public class GlavniProzor extends JFrame {
 	private JButton getBtnStopBruce() {
 		if (btnStopBruce == null) {
 			btnStopBruce = new JButton("Stop Bruce");
+			btnStopBruce.setBounds(18, 170, 111, 25);
+			btnStopBruce.setBackground(UIManager.getColor("Button.light"));
 			btnStopBruce.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					guiKontr.getT().stopBruce();
@@ -192,6 +213,8 @@ public class GlavniProzor extends JFrame {
 	private JButton getBtnStopU() {
 		if (btnStopU == null) {
 			btnStopU = new JButton("Stop U2");
+			btnStopU.setBounds(29, 200, 89, 25);
+			btnStopU.setBackground(UIManager.getColor("Button.light"));
 			btnStopU.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					guiKontr.getT().stopU2();
@@ -211,5 +234,24 @@ public class GlavniProzor extends JFrame {
 			btnClear.setBounds(168, 12, 117, 25);
 		}
 		return btnClear;
+	}
+	private JButton getBtnRefresh() {
+		if (btnRefresh == null) {
+			btnRefresh = new JButton("Refresh");
+			btnRefresh.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					guiKontr.getT().stopPatti();
+					guiKontr.getT().stopBruce();
+					guiKontr.getT().stopU2();
+					guiKontr.inicijalizujThreds(textArea);
+					btnStartBruce.setEnabled(true);
+					btnStartPatti.setEnabled(true);
+					btnStartU.setEnabled(true);
+					btnStart.setEnabled(true);
+				}
+			});
+			btnRefresh.setBounds(29, 270, 89, 25);
+		}
+		return btnRefresh;
 	}
 }

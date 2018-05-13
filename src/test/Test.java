@@ -19,8 +19,16 @@ public class Test {
 	private Singer pattiSmith;
 	private Singer bruceSpringsteen;
 	private Singer u2;
-	Synchronizer synch;
+	private Synchronizer synch;
 	
+	public Synchronizer getSynch() {
+		return synch;
+	}
+
+	public void setSynch(Synchronizer synch) {
+		this.synch = synch;
+	}
+
 	public void initializeSingingInThreads(JTextArea textArea) {
 		String lyrics1 = "Patti: Because the night";
 		String lyrics2 = "Bruce: Belongs to lovers";

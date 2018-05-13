@@ -42,17 +42,6 @@ public class GUIKontorler {
 	public void startThreads() {
 		t.startThreads();
 	}
-	public void refresh() {
-		if(t.getSynch().isPattiActive()) {
-			t.stopPatti();
-		}
-		if(t.getSynch().isBruceActive()) {
-			t.stopBruce();
-		}
-		if(t.getSynch().isU2Active()) {
-			t.stopU2();
-		}
-		
-	}
+	
 	
 }

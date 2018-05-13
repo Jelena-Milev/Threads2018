@@ -20,6 +20,7 @@ import javax.swing.JSeparator;
 import java.awt.FlowLayout;
 import javax.swing.UIManager;
 import java.awt.Color;
+import java.awt.Toolkit;
 
 public class GlavniProzor extends JFrame {
 
@@ -44,6 +45,7 @@ public class GlavniProzor extends JFrame {
 	 * Create the frame.
 	 */
 	public GlavniProzor(GUIKontorler guiKontr) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(GlavniProzor.class.getResource("/music.png")));
 		this.guiKontr=guiKontr;
 		setTitle("Because the Night");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
